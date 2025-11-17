@@ -1,0 +1,20 @@
+{
+    "name": "anyelo/app-salon",
+    "description": "proyeto mvc php 8",
+    "autoload": {
+        "psr-4": {
+            "MVC\\": "./",
+            "Controllers\\": "controllers/",
+            "MVC\\Controllers\\": "controllers/",
+            "Model\\": "models/",
+            "MVC\\Models\\": "models/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Anyelo Bustos",
+            "email": "sen.programador@gmail.com"
+        }
+    ],
+    "require": {}
+}
