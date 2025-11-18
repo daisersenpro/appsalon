@@ -1,0 +1,33 @@
+@use 'base/variables'as v;
+ @use 'base/mixins' as m;
+
+ .contenedor-app {
+     // Mobile first: stacked (imagen arriba)
+     display: block;
+
+     @include m.tablet{
+         display: grid;
+         grid-template-columns: repeat(2, 1fr);
+         min-height: 100vh;
+         align-items: stretch;
+     }
+
+        .imagen {
+            // Mobile: fixed height (so image appears as a banner above)
+            height: 20rem;
+            background-image: url('../img/barberia.jpg');
+            background-size: cover;
+            background-position: center center;
+
+            @include m.tablet{
+                // Desktop/tablet: let the grid control sizing
+                height: auto;
+            }
+        }
+
+        .app {
+            width: 95%;
+            margin: 0 auto;
+            padding: 3rem 0;
+        }
+ }
