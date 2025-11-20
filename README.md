@@ -1,4 +1,4 @@
-﻿# AppSalon  Sistema de Turnos para Barbería
+﻿# AppSalon  Sistema de Turnos para Barbería-Peluqueria-Spa
 
  <img width="1524" height="735" alt="Web-App-Salon" src="https://github.com/user-attachments/assets/87043cb0-0a7c-402b-967c-d71cff838d5c" />
 
