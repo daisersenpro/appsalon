@@ -24,6 +24,11 @@ class LoginController {
     }
     public static function crear(Router $router) {
         // Lógica para crear una cuenta
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            
+            $usuario = $_POST['usuario'];
+        }
+
         $router->render('auth/crear-cuenta');
     }
 }
