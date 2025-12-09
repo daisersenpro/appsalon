@@ -1,4 +1,6 @@
-﻿# AppSalon  Sistema de Turnos para Barbería
+﻿# AppSalon  Sistema de Turnos para Barbería-Peluqueria-Spa
+
+ <img width="1524" height="735" alt="Web-App-Salon" src="https://github.com/user-attachments/assets/87043cb0-0a7c-402b-967c-d71cff838d5c" />
 
 AppSalon es una aplicación web completa para la gestión de citas en una barbería. Está construida con una arquitectura MVC ligera en PHP, utiliza Composer para autoload (PSR-4), y cuenta con una canalización de frontend basada en SASS y Gulp para compilar estilos y optimizar imágenes.
 
