@@ -65,7 +65,8 @@ class ActiveRecord {
         $atributos = [];
         foreach(static::$columnasDB as $columna) {
             if($columna === 'id') continue;
-            $atributos[$columna] = $this->$columna;
+            $atributos[$columna] = $this->$columna ?? '';
+
         }
         return $atributos;
     }
@@ -75,7 +76,7 @@ class ActiveRecord {
         $atributos = $this->atributos();
         $sanitizado = [];
         foreach($atributos as $key => $value ) {
-            $sanitizado[$key] = self::$db->escape_string($value);
+            $sanitizado[$key] = self::$db->escape_string($value ?? '');
         }
         return $sanitizado;
     }
@@ -123,6 +124,16 @@ class ActiveRecord {
         return array_shift( $resultado ) ;
     }
 
+     // Busca un registro por su token
+    public static function where($columna, $valor) {
+        if ($valor === null || $valor === '') {
+            return null;
+        }
+        $valor = self::$db->escape_string((string)$valor);
+        $query = "SELECT * FROM " . static::$tabla  ." WHERE {$columna} = '{$valor}' LIMIT 1";
+        $resultado = self::consultarSQL($query);
+        return array_shift( $resultado ) ;
+    }
     // crea un nuevo registro
     public function crear() {
         // Sanitizar los datos
