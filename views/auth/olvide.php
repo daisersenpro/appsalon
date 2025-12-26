@@ -1,6 +1,10 @@
 <h1 class="nombre-pagina">Recuperar Password</h1>
 <p class="descripcion-pagina">Ingresa tu email y te enviaremos instrucciones para cambiar tu password</p>
 
+<?php 
+    include_once __DIR__ . '/../templates/alertas.php';
+?>
+
 <form class="formulario" method="POST" action="/olvide">
 
     <div class="campo">
