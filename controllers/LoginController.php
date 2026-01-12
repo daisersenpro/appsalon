@@ -96,9 +96,50 @@ class LoginController {
         ]);
     }
 
-    public static function recuperar() {
+    public static function recuperar(Router $router) {
         // Lógica para restablecer la contraseña
-        echo "Página para recuperar la contraseña";
+
+        $alertas = [];
+        $error = false;
+
+        $token = s($_GET['token']);
+        //Buscar usuario por su token
+        $usuario = Usuario::where('token', $token);
+
+        if(empty($usuario)) {
+            Usuario::setAlerta('error', 'Token no válido');
+            $error = true;     
+        }
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            //Leer el nuevo password y guardarlo
+
+            $password = new Usuario($_POST);
+            $alertas = $password->validarPassword();
+
+            if(empty($alertas)){
+                $usuario->password = null;
+                $usuario->password = $password->password;
+                $usuario->hashPassword();
+                $usuario->token = null;
+
+                $resultado = $usuario->guardar();
+                if($resultado){
+                    header('Location: /');
+                }
+                
+
+            }
+        }
+        //debuguear($usuario);
+
+        $alertas = Usuario::getAlertas();
+        $router->render('auth/recuperar-password', [
+            'alertas' => $alertas,
+            'error' => $error
+
+        ]);
+        
     }
 
     public static function crear(Router $router) {
